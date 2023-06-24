@@ -23,7 +23,6 @@ int replace_char(va_list ap_list, char id)
 		if (fmt_op[i].c == id)
 		{
 			c_printed = fmt_op[i].write_func(ap_list);
-			break;
 		}
 	}
 	return (c_printed);

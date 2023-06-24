@@ -22,9 +22,8 @@ int _printf(const char *format, ...)
 		{
 			/* replace and print to stdout */
 			c_temp = replace_char(ap_list, format[++c_index]);
-			if (c_temp == -1)
-				break;
-			c_printed += c_temp;
+			if (c_temp != -1)
+				c_printed += c_temp;
 		}
 		else
 		{
