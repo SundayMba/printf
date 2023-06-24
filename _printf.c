@@ -12,7 +12,6 @@ int _printf(const char *format, ...)
 	/* pointer to the var argument list */
 	va_list ap_list;
 	int c_index = 0, c_printed = 0, c_temp;
-	char c_replace;
 
 	if (format == NULL)
 		return (-1);

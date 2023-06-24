@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * rep_char - replace a placeholder char and print to stdout
+ * replace_char - replace a placeholder char and print to stdout
  * @ap_list: pointer to the list of variable argument
  * @id: placeholder character to replace
  * Return: number of characters written
@@ -10,8 +10,7 @@
 int replace_char(va_list ap_list, char id)
 {
 	int c_printed = 0;
-	printf_op_t fmt_op[] = 
-	{
+	printf_op_t fmt_op[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
@@ -51,6 +50,7 @@ int print_char(va_list ap_list)
  */
 int print_percent(va_list ap_list)
 {
+	UNUSED(ap_list);
 	return (write(1, "%%", 1));
 }
 
