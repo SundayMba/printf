@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		if (format[c_index] == '%')
 		{
 			/* replace and print to stdout */
-			c_printed += rep_char(ap_list, format[++c_index);
+			c_printed += replace_char(ap_list, format[++c_index]);
 		}
 		else
 		{
