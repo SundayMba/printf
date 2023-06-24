@@ -14,7 +14,7 @@ int replace_char(va_list ap_list, char id)
 	{
 		{'c', print_char},
 		{'s', print_string},
-		{'%', print_percent}
+		{'%', print_percent},
 		{'\0', NULL}
 	};
 	int i;
@@ -51,11 +51,24 @@ int print_char(va_list ap_list)
  */
 int print_percent(va_list ap_list)
 {
-	char percent;
-	percent = va_arg(ap_list, int);
 	return (write(1, "%%", 1));
 }
 
 /**
  * print_string - print string to stdout
- * @ap_
+ * @ap_list: pointer to the list of argument
+ * Return: number of characters printed
+ */
+
+int print_string(va_list ap_list)
+{
+	char *str;
+	int index = 0;
+
+	str = va_arg(ap_list, char *);
+	if (str == NULL)
+		return (-1);
+	while (str[index] != '\0')
+		index++;
+	return (write(1, str, index));
+}

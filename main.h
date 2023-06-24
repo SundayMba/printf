@@ -12,13 +12,13 @@ int replace_char(va_list ap_list, char id);
 /**
  * struct printf_op - defines a prototype for printing
  * @c: character to replace
- * @format_handler: pointing to each printing function
+ * @write-func: pointing to each printing function
  */
 struct printf_op
 {
 	char c;
 	int (*write_func)(va_list ap_list);
-}
+};
 typedef struct printf_op printf_op_t;
 
 int print_char(va_list);
