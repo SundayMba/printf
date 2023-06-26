@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	/* pointer to the var argument list */
 	va_list ap_list;
-	int c_printed = 0, index = 0;
+	int c_printed = 0, index = 0, temp = 0;
 
 	if (!format)
 		return (-1);
@@ -26,7 +26,10 @@ int _printf(const char *format, ...)
 		if (format[index] == '%')
 		{
 			/* replace and print to stdout */
-			c_printed += replace_char(ap_list, format[++index]);
+			temp = replace_char(ap_list, format[++index]);
+			if (temp == -1)
+				return (-1);
+			c_printed += temp;
 		}
 		else
 		{
