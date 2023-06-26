@@ -10,10 +10,8 @@
 int replace_char(va_list ap_list, char id)
 {
 	int c_printed = 0;
-	printf_op_t fmt_op[] = {
 	int flag = 0;
-	printf_op_t fmt_op[] = 
-	{
+	printf_op_t fmt_op[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
@@ -62,17 +60,6 @@ int print_percent(va_list ap_list)
 	return (write(1, "%%", 1));
 }
 
-/**
- * print_newline - print newline to the stdout
- * @ap_list: pointer to the list of argument
- * Return: number of characters written
- */
-int print_newline(va_list ap_list)
-{
-
-	UNUSED(ap_list);
-	return (write(1, "\n", 1));
-}
 
 /**
  * print_string - print string to stdout

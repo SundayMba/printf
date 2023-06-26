@@ -13,10 +13,11 @@ int _printf(const char *format, ...)
 	va_list ap_list;
 	int c_index = 0, c_printed = 0, c_temp;
 
-	if (format == NULL)
+	if (!format)
 		return (-1);
 	/* initialize the pointer */
 	va_start(ap_list, format);
+
 	while (*format != '\0')
 	{
 		/* check for placeholder replacement */
