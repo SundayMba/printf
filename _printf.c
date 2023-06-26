@@ -20,11 +20,13 @@ int _printf(const char *format, ...)
 
 	while (format[index] != '\0')
 	{
+		if (format[index] == '%' && format[index + 1] == '\0')
+			return (c_printed);
 		/* check for placeholder replacement */
 		if (format[index] == '%')
 		{
 			/* replace and print to stdout */
-			c_printed += replace_char(ap_list, format[index + 1]);
+			c_printed += replace_char(ap_list, format[++index]);
 		}
 		else
 		{
