@@ -10,17 +10,13 @@
 int replace_char(va_list ap_list, char id)
 {
 	int c_printed = 0;
-<<<<<<< HEAD
 	printf_op_t fmt_op[] = {
-=======
 	int flag = 0;
 	printf_op_t fmt_op[] = 
 	{
->>>>>>> test
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
-		{'\n', print_newline},
 		{'\0', NULL}
 	};
 	int i;
@@ -30,11 +26,8 @@ int replace_char(va_list ap_list, char id)
 		if (fmt_op[i].c == id)
 		{
 			c_printed = fmt_op[i].write_func(ap_list);
-<<<<<<< HEAD
-=======
 			flag = 1;
 			break;
->>>>>>> test
 		}
 	}
 	if (flag)
@@ -65,10 +58,6 @@ int print_char(va_list ap_list)
  */
 int print_percent(va_list ap_list)
 {
-<<<<<<< HEAD
-
-=======
->>>>>>> test
 	UNUSED(ap_list);
 	return (write(1, "%%", 1));
 }
