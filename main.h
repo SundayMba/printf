@@ -23,13 +23,13 @@ struct printf_op
 typedef struct printf_op printf_op_t;
 
 int print_char(va_list);
-int print_int(va_list);
+int print_int(int);
 int print_newline(va_list);
 int print_string(va_list);
 int print_float(va_list);
 int print_percent(va_list);
 int print_double(va_list);
-int print_binary(va_list);
+int print_binary(int);
 int print_hex_upper(va_list);
 int print_hex_lower(va_list);
 int print_octal(va_list);
