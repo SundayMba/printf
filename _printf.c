@@ -17,21 +17,25 @@ int _printf(const char *format, ...)
 		return (-1);
 	/* initialize the pointer */
 	va_start(ap_list, format);
-	while (format[c_index] != '\0')
+	while (*format != '\0')
 	{
 		/* check for placeholder replacement */
-		if (format[c_index] == '%')
+		if (*format == '%')
 		{
 			/* replace and print to stdout */
+<<<<<<< HEAD
 			c_temp = replace_char(ap_list, format[++c_index]);
 			if (c_temp != -1)
 				c_printed += c_temp;
+=======
+			c_printed += replace_char(ap_list, *(++format));
+>>>>>>> test
 		}
 		else
 		{
-			c_printed += print_output(format[c_index]);
+			c_printed += print_output(*format);
 		}
-		c_index++;
+		format++;
 	}
 	return (c_printed);
 }
