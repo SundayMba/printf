@@ -93,8 +93,12 @@ int print_int(va_list ap)
 		d = -d;
 	}
 	whn = d;
-	while (whn = whn / 10)
+	whn = whn / 10;
+	while (whn)
+	{
+		whn = whn / 10;
 		count++;
+	}
 	str = malloc(count);
 	if (str == NULL)
 		return (-1);
