@@ -23,13 +23,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			/* replace and print to stdout */
-<<<<<<< HEAD
-			c_temp = replace_char(ap_list, format[++c_index]);
-			if (c_temp != -1)
-				c_printed += c_temp;
-=======
 			c_printed += replace_char(ap_list, *(++format));
->>>>>>> test
 		}
 		else
 		{
