@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	/* pointer to the var argument list */
 	va_list ap_list;
-	int c_printed = 0, index = 0, temp = 0;
+	int c_printed = 0, index = 0;
 
 	if (!format)
 		return (-1);
