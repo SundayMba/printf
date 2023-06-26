@@ -9,17 +9,18 @@
 
 int replace_char(va_list ap_list, char id)
 {
-	/*printf_op_t fmt_op[] = {
+	printf_op_t fmt_op[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
 		{'d', print_int},
 		{'i', print_int},
 		{'\0', NULL}
-	};*/
-	int count, n;
+	};
+	int i;
 
-	switch (id)
+	/*
+	 * switch (id)
 	{
 		case 'c':
 			count = print_char(ap_list);
@@ -42,11 +43,11 @@ int replace_char(va_list ap_list, char id)
 		default:
 			return (-1);
 	}
-	return (count);
-	/*for (i = 0; fmt_op[i].c != '\0'; i++)
+	*/
+	for (i = 0; fmt_op[i].c != '\0'; i++)
 		if (fmt_op[i].c == id)
 			return (fmt_op[i].write_func(ap_list));
-	return (-1);*/
+	return (-1);
 }
 
 
@@ -104,7 +105,7 @@ int print_string(va_list ap_list)
  * Return: printed number
  */
 
-/*int print_int(va_list ap)
+int print_int(va_list ap)
 {
 	int d, whn, count = 1, c, neg = 0;
 	char *str;
@@ -135,8 +136,10 @@ int print_string(va_list ap_list)
 	count = write(1, str, c) + neg;
 	free(str);
 	return (count);
-}*/
-int print_int(int d)
+}
+
+/*
+ * int print_int(int d)
 {
 	char c;
 	int rem, count = 0;
@@ -160,27 +163,5 @@ int print_int(int d)
 	count += write(1, &c, 1);
 	return (count);
 }
+*/
 
-int print_binary(int d)
-{
-	char c;
-	int rem, count = 0;
-
-	if (d < 0)
-	{
-		d = -d;
-	}
-	if ((d / 2) == 0)
-	{
-		rem = d % 2;
-		c = rem + '0';
-		count += write(1, &c, 1);
-		return (count);
-	}
-	rem = d % 2;
-	d = d / 2;
-	count += print_int(d);
-	c = rem + '0';
-	count += write(1, &c, 1);
-	return (count);
-}
