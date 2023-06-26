@@ -12,12 +12,12 @@ int _printf(const char *format, ...)
 	/* pointer to the var argument list */
 	va_list ap_list;
 	int c_index = 0, c_printed = 0, c_temp;
-	char c_replace;
 
 	if (format == NULL)
 		return (-1);
 	/* initialize the pointer */
 	va_start(ap_list, format);
+<<<<<<< HEAD
 	while (*format != '\0')
 	{
 		/* check for placeholder replacement */
@@ -25,6 +25,17 @@ int _printf(const char *format, ...)
 		{
 			/* replace and print to stdout */
 			c_printed += replace_char(ap_list, *(++format));
+=======
+	while (format != NULL && format[c_index] != '\0')
+	{
+		/* check for placeholder replacement */
+		if (format[c_index] == '%' && format[c_index - 1] != '\\')
+		{
+			/* replace and print to stdout */
+			c_temp = replace_char(ap_list, format[++c_index]);
+			if (c_temp != -1)
+				c_printed += c_temp;
+>>>>>>> d45f50aba56af67a4577a805992f34cbf3eded25
 		}
 		else
 		{

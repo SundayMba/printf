@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#define UNUSED(x) (void)(x)
 
 #define UNUSED(x) (void)x
 
@@ -25,6 +26,7 @@ typedef struct printf_op printf_op_t;
 
 int print_char(va_list);
 int print_int(va_list);
+int print_newline(va_list);
 int print_string(va_list);
 int print_float(va_list);
 int print_percent(va_list);
