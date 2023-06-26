@@ -9,7 +9,6 @@
 
 int replace_char(va_list ap_list, char id)
 {
-	int c_printed = 0;
 	printf_op_t fmt_op[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -19,13 +18,9 @@ int replace_char(va_list ap_list, char id)
 	int i;
 
 	for (i = 0; fmt_op[i].c != '\0'; i++)
-	{
 		if (fmt_op[i].c == id)
-		{
-			c_printed = fmt_op[i].write_func(ap_list);
-		}
-	}
-		return (c_printed);
+			return (fmt_op[i].write_func(ap_list));
+	return (0);
 }
 
 
@@ -66,8 +61,13 @@ int print_string(va_list ap_list)
 	int length = 0;
 
 	str = va_arg(ap_list, char *);
-	if (!str)
+	if (str == NULL)
+	{
 		str = "(null)";
+		while (str[length])
+			length++;
+		return (write(1, str, length));
+	}
 	while (str[length])
 		length++;
 	return (write(1, str, length));
