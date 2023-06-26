@@ -13,6 +13,7 @@ int replace_char(va_list ap_list, char id)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{'d', print_int},
 		{'\0', NULL}
 	};
 	int i;
@@ -71,4 +72,38 @@ int print_string(va_list ap_list)
 	while (str[length])
 		length++;
 	return (write(1, str, length));
+}
+/**
+ * print_int - print int
+ * @ap: pointer to int argument
+ * Return: printed number
+ */
+
+int print_int(va_list ap)
+{
+	int d, whn, count = 1, c, neg = 0;
+	char *str;
+
+	d = va_arg(ap, int);
+
+	if (d < 0)
+	{
+		neg += write(1, "-", 1);
+		d = -d;
+	}
+	whn = d;
+	while (whn = whn / 10)
+		count++;
+	str = malloc(count);
+	if (str == NULL)
+		return (-1);
+	c = count;
+	while (count)
+	{
+		str[--count] = (d % 10) + '0';
+		d = d / 10;
+	}
+	count = write(1, str, c) + neg;
+	free(str);
+	return (count);
 }
