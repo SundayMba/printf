@@ -17,10 +17,10 @@ int _printf(const char *format, ...)
 		return (-1);
 	/* initialize the pointer */
 	va_start(ap_list, format);
-	while (format != NULL && format[c_index] != '\0')
+	while (format[c_index] != '\0')
 	{
 		/* check for placeholder replacement */
-		if (format[c_index] == '%' && format[c_index - 1] != '\\')
+		if (format[c_index] == '%')
 		{
 			/* replace and print to stdout */
 			c_temp = replace_char(ap_list, format[++c_index]);
