@@ -14,6 +14,7 @@ int replace_char(va_list ap_list, char id)
 		{'s', print_string},
 		{'%', print_percent},
 		{'d', print_int},
+		{'i', print_int},
 		{'\0', NULL}
 	};
 	int i;
