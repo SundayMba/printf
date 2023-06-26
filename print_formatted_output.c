@@ -18,6 +18,8 @@ int replace_char(va_list ap_list, char id)
 	};
 	int i;
 
+	if (id == '\0')
+		return (0);
 	for (i = 0; fmt_op[i].c != '\0'; i++)
 	{
 		if (fmt_op[i].c == id)
