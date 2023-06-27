@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			/* replace and print to stdout */
 			t = replace_char(ap_list, format[++index]);
 			if (t == -1)
-				break;
+				return (-1);
 			c_printed += t;
 		}
 		else
