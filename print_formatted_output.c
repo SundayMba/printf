@@ -90,7 +90,7 @@ int print_string(va_list ap_list)
 
 int print_int(va_list ap)
 {
-	int d, whn, count = 1, c, neg = 0;
+	long int d, whn, count = 1, c, neg = 0;
 	char *str;
 
 	d = va_arg(ap, int);
@@ -98,7 +98,7 @@ int print_int(va_list ap)
 	if (d < 0)
 	{
 		neg += write(1, "-", 1);
-		d = -d;
+		d = ((-1) * d);
 	}
 	whn = d;
 	whn = whn / 10;
