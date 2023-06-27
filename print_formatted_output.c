@@ -67,7 +67,6 @@ int print_string(va_list ap_list)
 		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)
 		write(1, &str[i], 1);
-	write(1, "\0", 1);
 	return (i);
 }
 /**
