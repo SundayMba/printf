@@ -29,11 +29,12 @@ int print_string(va_list);
 int print_float(va_list);
 int print_percent(va_list);
 int print_double(va_list);
-int print_binary(int);
+int print_binary(va_list);
 int print_hex_upper(va_list);
 int print_hex_lower(va_list);
 int print_octal(va_list);
 int print_pointer(va_list);
 int print_rot13string(va_list);
+int binary_conversion(unsigned int);
 
 #endif

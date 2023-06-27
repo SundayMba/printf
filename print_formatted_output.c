@@ -15,6 +15,7 @@ int replace_char(va_list ap_list, char id)
 		{'%', print_percent},
 		{'d', print_int},
 		{'i', print_int},
+		{'b', print_binary},
 		{'\0', NULL}
 	};
 	int i, len = 0;
@@ -120,31 +121,3 @@ int print_int(va_list ap)
 	free(str);
 	return (count);
 }
-
-/*
- * int print_int(int d)
-{
-	char c;
-	int rem, count = 0;
-
-	if (d < 0)
-	{
-		count += write(1, "-", 1);
-		d = -d;
-	}
-	if ((d / 10) == 0)
-	{
-		rem = d % 10;
-		c = rem + '0';
-		count += write(1, &c, 1);
-		return (count);
-	}
-	rem = d % 10;
-	d = d / 10;
-	count += print_int(d);
-	c = rem + '0';
-	count += write(1, &c, 1);
-	return (count);
-}
-*/
-
