@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 
 	if (format[index] == '%' && format[index + 1] == '\0')
 		return (-1);
-	if (format[index] == '%' && format[index + 1] == ' ')
+	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
 		return (-1);
 	while (format[index] != '\0')
 	{
