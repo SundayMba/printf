@@ -35,5 +35,5 @@ int print_hex_lower(va_list);
 int print_octal(va_list);
 int print_pointer(va_list);
 int print_rot13string(va_list);
-
+int handle_number(va_list);
 #endif

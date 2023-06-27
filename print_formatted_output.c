@@ -14,6 +14,8 @@ int replace_char(va_list ap_list, char id)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{'d', print_int},
+		{'i', print_int},
 		{'\n', print_newline},
 		{'\0', NULL}
 	};
@@ -28,6 +30,40 @@ int replace_char(va_list ap_list, char id)
 	}
 	return (c_printed);
 }
+
+int handle_number(va_list ap_list)
+{
+	int num, base, len;
+	unsigned int n;
+	
+	num = va_arg(ap_list, int);
+	base = 1;
+	len = 0;
+	if (num < 0)
+	{
+		len += write( 1, "-", 1);
+		n = num * -1;
+	}
+	else
+		n = num;
+	for (; n / base > 9;)
+		base *= 10;
+	for (; base != 0;)
+	{
+		len += print_output('0' + n /base);
+		n %= base;
+		base /= 10;
+	}
+}
+
+int print_int(va_list ap_list)
+{
+	int num;
+
+	num = handle_number(ap_list);
+	return(num);
+}
+	
 
 
 /**
