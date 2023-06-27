@@ -64,11 +64,15 @@ int print_string(va_list ap_list)
 
 	str = va_arg(ap_list, char *);
 	if (str == NULL)
+	{
 		str = "(null)";
-	while (str[i] != '\0')
+		while (str[i])
+			i++;
+		return (write(1, str, i));
+	}
+	while (str[i])
 		i++;
-	write(1, str, i);
-	return (i);
+	return (write(1, str, i));
 }
 /**
  * print_int - print int
