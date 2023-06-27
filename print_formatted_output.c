@@ -19,31 +19,6 @@ int replace_char(va_list ap_list, char id)
 	};
 	int i;
 
-	/*
-	 * switch (id)
-	{
-		case 'c':
-			count = print_char(ap_list);
-			break;
-		case 'i':
-		case 'd':
-			n = va_arg(ap_list, int);
-			count = print_int(n);
-			break;
-		case 's':
-			count = print_string(ap_list);
-			break;
-		case '%':
-			count = print_percent(ap_list);
-			break;
-		case 'b':
-			n = va_arg(ap_list, int);
-			count = print_binary(n);
-			break;
-		default:
-			return (-1);
-	}
-	*/
 	for (i = 0; fmt_op[i].c != '\0'; i++)
 		if (fmt_op[i].c == id)
 			return (fmt_op[i].write_func(ap_list));
@@ -85,19 +60,14 @@ int print_percent(va_list ap_list)
 int print_string(va_list ap_list)
 {
 	char *str;
-	int length = 0;
+	int i = 0;
 
 	str = va_arg(ap_list, char *);
 	if (str == NULL)
-	{
 		str = "(null)";
-		while (str[length])
-			length++;
-		return (write(1, str, length));
-	}
-	while (str[length])
-		length++;
-	return (write(1, str, length));
+	for (i = 0; str[i] != '\0'; i++)
+		write(1, &str[i], 1);
+	return (i);
 }
 /**
  * print_int - print int
