@@ -11,17 +11,12 @@ int _printf(const char *format, ...)
 {
 	/* pointer to the var argument list */
 	va_list ap_list;
-	int c_printed = 0, index = 0, t;
+	int c_printed = 0, index = 0, temp = 0;
 
 	if (format == NULL)
 		return (-1);
 	/* initialize the pointer */
 	va_start(ap_list, format);
-
-	if (format[index] == '%' && format[index + 1] == '\0')
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
-		return (-1);
 	while (format[index] != '\0')
 	{
 		/* check for placeholder replacement */
@@ -29,8 +24,10 @@ int _printf(const char *format, ...)
 		{
 			/* replace and print to stdout */
 			index++;
-			t = replace_char(ap_list, format[index]);
-			c_printed += t;
+			temp = replace_char(ap_list, format[index]);
+			if (temp == -1)
+				return (-1);
+			c_printed += temp;
 		}
 		else
 		{
