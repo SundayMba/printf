@@ -60,15 +60,15 @@ int print_percent(va_list ap_list)
 int print_string(va_list ap_list)
 {
 	char *str;
-	int i = 0, count = 0;
+	int i = 0;
 
 	str = va_arg(ap_list, char *);
 	if (str == NULL)
 		str = "(null)";
-	for (i = 0; str[i] != '\0'; i++)
-		count++;
-	write(1, str, count);
-	return (count);
+	while (str[i] != '\0')
+		i++;
+	write(1, str, i);
+	return (i);
 }
 /**
  * print_int - print int
