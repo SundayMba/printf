@@ -10,13 +10,10 @@
 int replace_char(va_list ap_list, char id)
 {
 	printf_op_t fmt_op[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'d', print_int},
-		{'i', print_int},
-		{'b', print_binary},
-		{'\0', NULL}
+		{'c', print_char}, {'s', print_string}, {'%', print_percent},
+		{'d', print_int}, {'i', print_int}, {'b', print_binary},
+		{'o', print_octal}, {'x', print_hex_lower},
+		{'X', print_hex_upper}, {'u', print_unsigned}, {'\0', NULL}
 	};
 	int i, len = 0;
 
@@ -91,33 +88,14 @@ int print_string(va_list ap_list)
 
 int print_int(va_list ap)
 {
-	long int d, whn, count = 1, c, neg = 0;
+	long int d, neg = 0;
 	char *str;
 
 	d = va_arg(ap, int);
-
 	if (d < 0)
 	{
 		neg += write(1, "-", 1);
 		d = ((-1) * d);
 	}
-	whn = d;
-	whn = whn / 10;
-	while (whn)
-	{
-		whn = whn / 10;
-		count++;
-	}
-	str = malloc(count);
-	if (str == NULL)
-		return (-1);
-	c = count;
-	while (count)
-	{
-		str[--count] = (d % 10) + '0';
-		d = d / 10;
-	}
-	count = write(1, str, c) + neg;
-	free(str);
-	return (count);
+	return (conv_print_int(d) + neg);
 }
