@@ -89,7 +89,6 @@ int print_string(va_list ap_list)
 int print_int(va_list ap)
 {
 	long int d, neg = 0;
-	char *str;
 
 	d = va_arg(ap, int);
 	if (d < 0)
